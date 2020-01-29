@@ -1,6 +1,5 @@
-#include "foo.h"
 #include "bar.h"
-
+#include "foo.h"
 int main()
 {
     Bar b{"testing"};
