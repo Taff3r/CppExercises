@@ -20,7 +20,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = sizetest datetest pointtest enumtest include_test
+PROGS = sizetest datetest pointtest palindrometest enumtest include_test 
 
 all: $(PROGS)
 
@@ -28,6 +28,7 @@ all: $(PROGS)
 sizetest: sizetest.o point.o
 datetest: datetest.o date.o
 pointtest: pointtest.o point.o
+palindrometest: palindrometest.o palindrome.o
 enumtest: enumtest.o eyes.o traffic_light.o
 include_test: include_test.o
 
