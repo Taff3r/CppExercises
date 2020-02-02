@@ -37,5 +37,4 @@ int main() {
 	cout << endl;
 	
 	cout << "Is empty: " << list.empty() << endl;
-    cout << "Size: " << sizeof(list) << endl;
 }

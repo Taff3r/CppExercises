@@ -2,6 +2,7 @@
 #include "list.h"
 using std::cout;
 using std::endl;
+
 List::List() {
     this->first = nullptr;
 }
