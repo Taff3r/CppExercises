@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../testlib/foo.h
+
+/home/simon/git/CppExercises/lab1/cmake-example/main.cc
+iostream
+-
+SimpleConfig.h
+/home/simon/git/CppExercises/lab1/cmake-example/SimpleConfig.h
+foo.h
+/home/simon/git/CppExercises/lab1/cmake-example/foo.h
+
+SimpleConfig.h
+

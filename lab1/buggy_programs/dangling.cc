@@ -25,7 +25,7 @@ void example1()
 
     print(f);
     cout << "after first print\n";
-    *f.begin()=123;
+    *f.begin() = 123;
     cout << "printing again\n";
     print(f);
     cout << "done\n";
