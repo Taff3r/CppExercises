@@ -3,7 +3,6 @@
 
 using std::cout;
 using std::endl;
-// Hello There!
 int main() {
 	List list;
 	cout << std::boolalpha;
@@ -38,4 +37,5 @@ int main() {
 	cout << endl;
 	
 	cout << "Is empty: " << list.empty() << endl;
+    cout << "Size: " << sizeof(list) << endl;
 }

@@ -43,7 +43,7 @@ private:
 		int value;  // the node value
 		Node* next; // pointer to the next node, nullptr in the last node
 		Node(int v, Node* n) : value(v), next(n) {}
-        ~Node(){ delete next;}
+        ~Node(){delete next;}
 	};
 	
 	Node* first; // pointer to the first node

@@ -7,7 +7,7 @@ List::List() {
 }
     
 List::~List() {
-   delete this->first; 
+    delete this->first;
 }
 
 bool List::exists(int d) const {
@@ -49,11 +49,12 @@ void List::remove(int d, DeleteFlag df) {
         switch (df) {
             case DeleteFlag::LESS:
                 if (curr->value < d){
-                    if (prev == NULL){
+                    if (prev == NULL){ // Special case when first item in list
                         this->first = curr->next;
                     }else{
                         prev->next = curr->next; 
                     }
+                    curr->next = nullptr;
                     delete curr;
                     return;
                 }
@@ -65,6 +66,7 @@ void List::remove(int d, DeleteFlag df) {
                     }else{
                         prev->next = curr->next; 
                     }
+                    curr->next = nullptr;
                     delete curr;
                     return;
                 }
@@ -73,10 +75,10 @@ void List::remove(int d, DeleteFlag df) {
                 if(curr->value > d){
                     if (prev == NULL){
                         this->first = curr->next;
-                    }else{
+                    } else {
                         prev->next = curr->next; 
-
                     }
+                    curr->next = nullptr;
                     delete curr;
                     return;
                 }
