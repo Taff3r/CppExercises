@@ -1,0 +1,9 @@
+/home/simont/git/CppExercises/lab1/cmake/CMakeFiles/rebuild_cache.dir
+/home/simont/git/CppExercises/lab1/cmake/CMakeFiles/edit_cache.dir
+/home/simont/git/CppExercises/lab1/cmake/CMakeFiles/Ltest.dir
+/home/simont/git/CppExercises/lab1/cmake/CMakeFiles/Encode.dir
+/home/simont/git/CppExercises/lab1/cmake/CMakeFiles/Decode.dir
+/home/simont/git/CppExercises/lab1/cmake/liblab1/CMakeFiles/edit_cache.dir
+/home/simont/git/CppExercises/lab1/cmake/liblab1/CMakeFiles/coding.dir
+/home/simont/git/CppExercises/lab1/cmake/liblab1/CMakeFiles/rebuild_cache.dir
+/home/simont/git/CppExercises/lab1/cmake/liblab1/CMakeFiles/list.dir

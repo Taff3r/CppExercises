@@ -1,0 +1,6 @@
+/home/simont/git/CppExercises/lab1/cmake-example/CMakeFiles/rebuild_cache.dir
+/home/simont/git/CppExercises/lab1/cmake-example/CMakeFiles/SimpleMain.dir
+/home/simont/git/CppExercises/lab1/cmake-example/CMakeFiles/edit_cache.dir
+/home/simont/git/CppExercises/lab1/cmake-example/testlib/CMakeFiles/rebuild_cache.dir
+/home/simont/git/CppExercises/lab1/cmake-example/testlib/CMakeFiles/TestLib.dir
+/home/simont/git/CppExercises/lab1/cmake-example/testlib/CMakeFiles/edit_cache.dir

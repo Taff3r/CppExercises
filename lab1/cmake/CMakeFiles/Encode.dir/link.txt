@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Encode.dir/encode.cc.o  -o Encode  liblab1/libcoding.a 

@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/simont/git/CppExercises/lab1/cmake/decode.cc
+iostream
+-
+fstream
+-
+string
+-
+coding.h
+/home/simont/git/CppExercises/lab1/cmake/coding.h
+
+liblab1/coding.h
+

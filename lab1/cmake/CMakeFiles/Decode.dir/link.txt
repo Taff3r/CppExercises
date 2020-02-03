@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Decode.dir/decode.cc.o  -o Decode  liblab1/libcoding.a 
