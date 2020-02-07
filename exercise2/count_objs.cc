@@ -8,10 +8,14 @@ private:
     static int created;
 public:
     Foo() {++created;}
+    ~Foo() {--created;}
+    static void print_count();
 };
 
 int Foo::created{0};
-
+void Foo::print_count() {
+    cout << Foo::created << endl;
+}
 void example()
 {
     {
@@ -29,7 +33,33 @@ void example()
     Foo::print_count();
 }
 
+void example2(){
+    int created = 0;
+
+    {
+        Foo a;
+        ++created;
+        Foo b;
+        ++created;
+        cout << "created " << created << " alive ";
+        Foo::print_count();
+        cout << endl;
+    }
+    {
+        Foo a;
+        ++created;
+        Foo b;
+        ++created;
+        Foo c;
+        ++created;
+        cout << "created " << created << " alive ";
+        Foo::print_count();
+        cout<<endl;
+    }
+}
+
 int main()
 {
     example();
+    example2();
 }
