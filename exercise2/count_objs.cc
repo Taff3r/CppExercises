@@ -56,6 +56,10 @@ void example2(){
         Foo::print_count();
         cout<<endl;
     }
+
+    cout << "created " << created << " alive ";
+    Foo::print_count();
+    cout << endl;
 }
 
 int main()
