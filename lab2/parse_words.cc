@@ -42,7 +42,7 @@ void write(ifstream &input, ofstream &output){
     while (input >> word) {
         auto trigrams = findTrigrams(word);
         output << word << " " << trigrams.size() << " ";
-        for (auto i = 0; i < trigrams.size(); ++i){
+        for (long unsigned int i = 0; i < trigrams.size(); ++i){
             output << trigrams.at(i) + " ";
         }
         output << endl;
