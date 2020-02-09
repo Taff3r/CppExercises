@@ -125,19 +125,36 @@ int distance(const string &s, const string &w){
     }
     return d[s.length()][w.length()];
 }
+
+bool comparePair(pair<int, string> &p1, pair<int, string> &p2){
+    return p1.first < p2.first;
+}
 void Dictionary::rank_suggestions(vector<string> &suggestions, const string word) const{
     vector<pair<int, string>> pairs;
-    cout << distance("cut", "cut") << "(0)" << endl;
-    cout << distance("cat", "cut") << "(1)" << endl;
-    cout << distance("kitten", "mittens") << "(2)" << endl;
     for (string sugg : suggestions){
         int d = distance(word, sugg);
-        cout << sugg << ": " << d << endl;
         pairs.push_back(make_pair(d, sugg));
+    }
+    // sort suggestions on distance
+    sort(pairs.begin(), pairs.end(), comparePair);
+    suggestions.clear(); // empty current suggestions
+
+    // replace with sorted ones
+    for (int i = 0; i < pairs.size(); ++i){
+        auto second = pairs.at(i).second;
+        auto first = pairs.at(i).first;
+        cout << second << ": " << first << endl;
+        suggestions.push_back(second);
     }
 
 }
-void Dictionary::trim_suggestions(vector<string> &suggestions) const{}
+
+
+void Dictionary::trim_suggestions(vector<string> &suggestions) const{
+    while (suggestions.size() > 5){
+        suggestions.pop_back();
+    }
+}
 
 
 
