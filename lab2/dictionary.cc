@@ -1,4 +1,5 @@
 #include <string>
+#include <utility>
 #include <vector>
 #include <fstream>
 #include <iostream>
@@ -14,6 +15,8 @@ using std::vector;
 using std::ifstream;
 using std::numeric_limits;
 using std::streamsize;
+using std::pair;
+using std::make_pair;
 // "private" functions
 string toLower(string &s);
 
@@ -63,7 +66,7 @@ void Dictionary::add_trigram_suggestions(vector<string> &suggestions, const stri
     }
 
     // append words with length  + 1 if word is appropriate length
-    if (word.length() > 3){
+    if (word.length() > 2 && word.length() + 1 < Dictionary::MAX_LETTERS){
        words.insert(words.end(), this->words[word.length() + 1].begin(), this->words[word.length() + 1].end());
     }
     // add words with atleast half of the trigrams matching to suggestions
@@ -91,7 +94,49 @@ string toLower(string &s){
     }
     return lower;
 }
-void Dictionary::rank_suggestions(vector<string> &suggestions, const string word) const{}
+int min(int x, int y){
+     int min = ((x) < (y)) ? (x) : (y);
+     return min;
+}
+
+int distance(const string &s, const string &w){
+    int d[26][26];
+    for (auto i = 0; i <= s.length(); ++i){
+        d[i][0] = i;
+    }
+
+    for (auto j = 0; j <= w.length(); ++j){
+        d[0][j] = j;
+    }
+
+    unsigned int i = 1;
+    unsigned int j = 1;
+    for (i = 1; i <= s.length(); ++i){
+        for (j = 1; j <= w.length(); ++j){
+            int qDist = 0;
+            if(s.at(i - 1) == w.at(j - 1)){
+                qDist = d[i-1][j-1];
+            } else {
+                qDist = (d[i-1][j-1] + 1);
+            }
+            int oDist = min((d[i-1][j] + 1), (d[i][j-1] + 1));
+            d[i][j] = min(oDist, qDist);
+        }
+    }
+    return d[s.length()][w.length()];
+}
+void Dictionary::rank_suggestions(vector<string> &suggestions, const string word) const{
+    vector<pair<int, string>> pairs;
+    cout << distance("cut", "cut") << "(0)" << endl;
+    cout << distance("cat", "cut") << "(1)" << endl;
+    cout << distance("kitten", "mittens") << "(2)" << endl;
+    for (string sugg : suggestions){
+        int d = distance(word, sugg);
+        cout << sugg << ": " << d << endl;
+        pairs.push_back(make_pair(d, sugg));
+    }
+
+}
 void Dictionary::trim_suggestions(vector<string> &suggestions) const{}
 
 
