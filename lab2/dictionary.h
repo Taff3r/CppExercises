@@ -18,7 +18,7 @@ public:
 	std::vector<std::string> get_suggestions(const std::string& word) const;
 private:
     unordered_set<string> wordSet;
-    vector<vector<Word>> words;
+    vector<Word> words[MAX_LETTERS];
     void add_trigram_suggestions(vector<string>&, const string) const;
     void rank_suggestions(vector<string> &, const string ) const;
     void trim_suggestions(vector<string> &) const;
