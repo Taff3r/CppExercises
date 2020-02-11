@@ -100,12 +100,12 @@ int min(int x, int y){
 }
 
 int distance(const string &s, const string &w){
-    int d[26][26];
-    for (auto i = 0; i <= s.length(); ++i){
+    int d[Dictionary::MAX_LETTERS + 1][Dictionary::MAX_LETTERS + 1];
+    for (unsigned int i = 0; i <= s.length(); ++i){
         d[i][0] = i;
     }
 
-    for (auto j = 0; j <= w.length(); ++j){
+    for (unsigned int j = 0; j <= w.length(); ++j){
         d[0][j] = j;
     }
 
@@ -140,10 +140,8 @@ void Dictionary::rank_suggestions(vector<string> &suggestions, const string word
     suggestions.clear(); // empty current suggestions
 
     // replace with sorted ones
-    for (int i = 0; i < pairs.size(); ++i){
+    for (unsigned int i = 0; i < pairs.size(); ++i){
         auto second = pairs.at(i).second;
-        auto first = pairs.at(i).first;
-        cout << second << ": " << first << endl;
         suggestions.push_back(second);
     }
 

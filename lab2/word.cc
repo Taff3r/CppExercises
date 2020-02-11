@@ -6,7 +6,7 @@ using std::vector;
 using std::string;
 
 Word::Word(const string& w, const vector<string>& t) {
-    this->word = word;
+    this->word = w;
     this->trigrams = t;
 }
 
