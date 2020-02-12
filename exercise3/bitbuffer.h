@@ -7,6 +7,10 @@ class BitBuffer {
 public:
 	BitBuffer(std::ostream& out);
 	void put(bool b);
+private:
+    std::ostream& os;
+    unsigned char buffer;
+    unsigned int inBuffer;
 };
 
 #endif
