@@ -61,17 +61,17 @@ void Dictionary::add_trigram_suggestions(vector<string> &suggestions, const stri
 
     vector<Word> words = this->words[word.length()];
     // append words with length  - 1 if word is appropriate length
-    if (word.length() < 2){
+    if (word.length() > 0){
         words.insert(words.end(), this->words[word.length() - 1].begin(), this->words[word.length() - 1].end());
     }
 
     // append words with length  + 1 if word is appropriate length
-    if (word.length() > 2 && word.length() + 1 < Dictionary::MAX_LETTERS){
+    if (word.length() + 1 <= Dictionary::MAX_LETTERS){
        words.insert(words.end(), this->words[word.length() + 1].begin(), this->words[word.length() + 1].end());
     }
     // add words with atleast half of the trigrams matching to suggestions
     vector<string> wTrigrams;
-    if (word.length() > 3){
+    if (word.length() >= 3){
         for (unsigned int lower = 0; lower + 3 <= word.length(); ++lower){
             string s;
             s.append(word, lower, 3);
@@ -81,7 +81,7 @@ void Dictionary::add_trigram_suggestions(vector<string> &suggestions, const stri
         sort(wTrigrams.begin(), wTrigrams.end());
     }
     for (Word w : words){
-        if (w.get_matches(wTrigrams) > wTrigrams.size() / 2){
+        if (w.get_matches(wTrigrams) >= wTrigrams.size() / 2){
             suggestions.push_back(w.get_word());
         }
     }
@@ -149,8 +149,8 @@ void Dictionary::rank_suggestions(vector<string> &suggestions, const string word
 
 
 void Dictionary::trim_suggestions(vector<string> &suggestions) const{
-    while (suggestions.size() > 5){
-        suggestions.pop_back();
+    if(suggestions.size() > 5){
+        suggestions.resize(5);
     }
 }
 
