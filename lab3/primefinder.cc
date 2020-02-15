@@ -23,7 +23,6 @@ vector<int> PrimeFinder::find(){
             primes.push_back(i);
         }
     }
-    std::cout << this->seq << std::endl;
     return primes; 
 }
 
