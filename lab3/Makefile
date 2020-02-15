@@ -21,7 +21,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = tagMain
+PROGS = tagMain testPrimes 
 all: $(PROGS)
 
 test: tagTest 
@@ -31,6 +31,7 @@ test: tagTest
 # Phony targets
 
 tagMain: tagMain.o tagremover.o
+testPrimes: testPrimes.o primefinder.o 
 .PHONY: all test clean distclean
 
 # Standard clean

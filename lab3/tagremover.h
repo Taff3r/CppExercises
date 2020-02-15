@@ -6,10 +6,10 @@
 class TagRemover {
 private:
     std::string loaded;
-    void removeTags();
-    void replaceSpecialChars();
     void replaceSpecial(int start, int end);
 public:
+    void removeTags();
+    void replaceSpecialChars();
     TagRemover(std::istream&);
     void print(std::ostream&);
 };
