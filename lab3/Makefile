@@ -21,7 +21,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = tagMain testPrimes 
+PROGS = tagMain testPrimes date_test dateoperator_test
 all: $(PROGS)
 
 test: tagTest 
@@ -32,6 +32,8 @@ test: tagTest
 
 tagMain: tagMain.o tagremover.o
 testPrimes: testPrimes.o primefinder.o 
+date_test: date_test.o date.o
+dateoperator_test: dateoperator_test.o date.o
 .PHONY: all test clean distclean
 
 # Standard clean
