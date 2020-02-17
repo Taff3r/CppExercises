@@ -49,12 +49,12 @@ void Date::next() {
 }
 
 istream& operator>>(istream& in, Date& d){
+    in.clear();
     string input;
     getline(in, input);
     int parts[3];
-
+    // year
     try {
-        // year
         int end = input.find_first_of('-');
         parts[0] = std::stoi(input.substr(0, end));
         // cut string and repeat
@@ -64,16 +64,19 @@ istream& operator>>(istream& in, Date& d){
         input.erase(0, end + 1);
         // day should be rest of input
         parts[2] = std::stoi(input);
-    } catch (std::exception &e){
+    } catch (std::exception& e){
         in.setstate(std::ios::failbit);
         return in;
     }
+    
+    // check formatting
     if (parts[0] > 0 && parts[1] > 0 && parts[1] > 0){ // Positive dates
         if (parts[1] > 0 && parts[1] < 12){ // Valid month
             if (Date::daysPerMonth[parts[1] - 1] >= parts[2]){ // Check valid date
                 d.year = parts[0];
                 d.month= parts[1];
                 d.day = parts[2];
+                in.setstate(std::ios::goodbit);
                 return in;
             }
         }

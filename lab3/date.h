@@ -11,6 +11,7 @@ public:
 	void next();               // advance to next day
     friend std::ostream &operator << (std::ostream&, Date&);
     friend std::istream &operator >> (std::istream&, Date&);
+    friend std::string &operator >> (std::string&, Date&);
 private:
 	int year;  // the year (four digits)
 	int month; // the month (1-12)
