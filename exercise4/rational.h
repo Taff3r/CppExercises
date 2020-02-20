@@ -10,7 +10,9 @@ public:
     Rational();
     Rational(unsigned int, unsigned int);
     Rational(unsigned int);
-    friend std::ostream& operator << (std::ostream&, Rational& r);
+    friend std::ostream& operator << (std::ostream&, const Rational& r);
+    Rational& operator += (const Rational& r);
 };
+Rational operator + (const Rational& lhs, const Rational& rhs);
 #endif
 
