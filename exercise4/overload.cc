@@ -6,6 +6,7 @@ struct B{
 };
 
 struct D :public B {
+    using B::f;
     void f() {cout << "D::f()\n";}
 };
 
@@ -21,12 +22,13 @@ void example1()
 
 void example2()
 {
+    D d;
     B& r = d;
-    r.f();
+    //r.f();
 }
 
 int main()
 {
     example1();
-    example2();
+    //example2();
 }

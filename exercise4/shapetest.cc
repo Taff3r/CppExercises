@@ -5,6 +5,7 @@
 #include "shape.h"
 #include "square.h"
 #include "circle.h"
+#include <iostream>
 
 int main() {
 	/*

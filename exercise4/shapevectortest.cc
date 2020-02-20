@@ -18,7 +18,7 @@ int main() {
 	/*
 	 * A vector of Shape objects
 	 */
-	vector<Shape> shapes;
+	vector<Shape*> shapes;
 	const size_t NBR_SHAPES = 10;
 	
 	/*
@@ -28,9 +28,9 @@ int main() {
 	bernoulli_distribution bd;
 	for (int i = 0; i != NBR_SHAPES; ++i) {
 		if (bd(re)) {
-			shapes.push_back(Square());
+			shapes.push_back(new Square());
 		} else {
-			shapes.push_back(Circle());
+			shapes.push_back(new Circle());
 		}
 	}
 	
@@ -38,6 +38,6 @@ int main() {
 	 * Print the shapes.
 	 */
 	for (const auto& s : shapes) {
-		s.print();
+		s->print();
 	}
 }

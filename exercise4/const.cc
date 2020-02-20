@@ -28,6 +28,12 @@ void bar(Foo& f)
     f(cout);
 }
 
+void bar(const Foo& f){
+    cout << "\nIn bar(const Foo&):\n";
+    f.print(cout);
+    f(cout);
+}
+
 void qux(Foo& f)
 {
     cout << "\nIn qux(Foo&):\n";
@@ -53,7 +59,7 @@ void example()
 
     foo(cf);
     // uncomment the below line and make sure you understand the error message
-    // bar(cf);
+    bar(cf);
 
     qux(ncf);
     qux(cf);
