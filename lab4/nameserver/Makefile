@@ -28,7 +28,7 @@ test: tagTest
 	./tagTest.sh
 
 # Targets rely on implicit rules for compiling and linking
-nstest: nstest.o vns.o mns.o
+nstest: nstest.o vns.o mns.o umns.o hns.o
 # Phony targets
 
 .PHONY: all test clean distclean

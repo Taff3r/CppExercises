@@ -4,8 +4,8 @@
 #include "nameserverinterface.h"
 #include "vns.h"
 #include "mns.h"
-//#include "umns.h"
-//#include "hns.h"
+#include "umns.h"
+#include "hns.h"
 #include <iostream>
 #include <cassert>
 #include <stdexcept>
@@ -14,7 +14,6 @@ using namespace std;
 
 void test(NameServerInterface& ns) {
 #if 1
-    cout << "Running test" << endl;
 	ns.insert("www.Bosse.se", 1);
 	ns.insert("www.Ek.se", 2);
 	assert(ns.lookup("www.Bosse.se") == 1);
@@ -46,18 +45,16 @@ int main() {
 	/*
 	 * Test the unordered map name server.
 	 */
-/*	UMNS umns;
+	UMNS umns;
 	test(umns);
 	cout << "Unordered map passed ..." << endl;
-*/	
+	
 	/*
 	 * Test the hash name server.
 	 * The parameter to the constructor is the size of the
 	 * hash table.
 	 */
-    /*
 	HNS hns(4711);
 	test(hns);
 	cout << "Hash passed ..." << endl;
-    */
 }
