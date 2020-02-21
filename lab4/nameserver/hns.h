@@ -9,7 +9,13 @@ using std::tuple;
 
 class HNS : public NameServerInterface {
 private:
-    vector<vector<tuple<HostName,IPAddress>>> map;
+    struct Node {
+        Node(HostName hn, IPAddress ip) : hn(hn), ip(ip) {};
+        Node() : hn(""), ip(NON_EXISTING_ADDRESS) {};
+        HostName hn;
+        IPAddress ip;
+    };
+    vector<vector<Node>> map;
     int hash(const HostName&) const;
 public:
     HNS(long size);

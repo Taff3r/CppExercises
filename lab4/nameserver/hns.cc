@@ -12,9 +12,9 @@ HNS::HNS(long size){
 }
 
 int HNS::hash(const HostName& hn) const {
-    unsigned int value = 7;
-    for (unsigned int i = 0 ; i < hn.size(); ++i){
-        value = value * 31 * hn[i];
+    int value = std::hash<std::string>{} (hn);
+    if ( value < 0 ){
+        value *= -1;
     }
     return value % this->map.size();
 }
@@ -26,14 +26,13 @@ void HNS::insert(const HostName& hn, const IPAddress& ip){
 
 bool HNS::remove(const HostName& hn){
     int index = hash(hn);
-    auto iterator = find_if(this->map[index].begin(), this->map[index].end(), [hn] (const tuple<HostName, IPAddress> tuple) {
-            if (hn == get<0>(tuple)) {
+    auto iterator = remove_if(this->map[index].begin(), this->map[index].end(), [hn] (const Node n) {
+            if (hn == n.hn) {
                return true; 
             }
             return false;
     });
     if (iterator != this->map[index].end()){
-        this->map[index].erase(iterator);
         return true;
     }
     return false;
@@ -42,8 +41,8 @@ bool HNS::remove(const HostName& hn){
 IPAddress HNS::lookup(const HostName& hn) const {
     try {
         int index = hash(hn);
-        auto iterator = find_if(this->map[index].begin(), this->map[index].end(), [hn] (const tuple<HostName, IPAddress> tuple) {
-                if (hn == get<0>(tuple)) {
+        auto iterator = find_if(this->map[index].begin(), this->map[index].end(), [hn] (const Node n) {
+                if (hn == n.hn) {
                     return true; 
                 }
                 return false;
@@ -51,7 +50,7 @@ IPAddress HNS::lookup(const HostName& hn) const {
 
         if (iterator != this->map[index].end()){
             auto dist = std::distance(this->map[index].begin(), iterator);
-            return get<1>(this->map[index].at(dist));
+            return this->map[index][dist].ip;
         }
     } catch (std::exception& e){
         return NON_EXISTING_ADDRESS;

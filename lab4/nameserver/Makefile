@@ -21,7 +21,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = nstest
+PROGS = nstest nstime
 all: $(PROGS)
 
 test: tagTest 
@@ -29,6 +29,7 @@ test: tagTest
 
 # Targets rely on implicit rules for compiling and linking
 nstest: nstest.o vns.o mns.o umns.o hns.o
+nstime: nstime.o vns.o mns.o umns.o hns.o
 # Phony targets
 
 .PHONY: all test clean distclean
