@@ -14,6 +14,9 @@ private:
         Node() : hn(""), ip(NON_EXISTING_ADDRESS) {};
         HostName hn;
         IPAddress ip;
+        bool operator < (const Node&n) const {
+            return this->hn < n.hn;
+        }
     };
     vector<vector<Node>> map;
     int hash(const HostName&) const;
