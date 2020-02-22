@@ -18,8 +18,11 @@ private:
             return this->hn < n.hn;
         }
     };
+    unsigned int satiation;
     vector<vector<Node>> map;
     int hash(const HostName&) const;
+    void grow();
+    const double MAX_SATIATION = 0.50;
 public:
     HNS(long size);
     void insert(const HostName&, const IPAddress&);

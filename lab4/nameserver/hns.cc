@@ -29,7 +29,24 @@ void HNS::insert(const HostName& hn, const IPAddress& ip){
     sort(this->map[index].begin(), this->map[index].end(), [](const Node r, const Node l) {
             return r.hn < l.hn;
             });
+    ++satiation;
+    if ( MAX_SATIATION < satiation / this->map.size()){
+        grow();
+    }
     
+}
+
+void HNS::grow(){
+    unsigned int newSize = 2 * this->map.size();
+    vector<Node> allNodes;
+    for (vector<Node> v : this->map){
+        allNodes.insert(allNodes.end(), v.begin(), v.end());
+    }
+    this->map.clear();
+    this->map.resize(newSize);
+    for (Node n: allNodes){
+        insert(n.hn, n.ip);
+    }
 }
 
 bool HNS::remove(const HostName& hn){
