@@ -1,8 +1,7 @@
 #include "bitsetiterator.h"
 
 bool BitsetIterator::operator !=(const BitsetIterator& bsi) const {
-    
-    return this->ref.pos != bsi.ref.pos;
+    return this->ref.pos != bsi.ref.pos || this->ref.p_bits != bsi.ref.p_bits;
 }
 
 BitsetIterator& BitsetIterator::operator++(){
