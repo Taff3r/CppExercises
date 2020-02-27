@@ -12,6 +12,7 @@ public:
 	name(n), phone(p) {}
 	std::string get_name() const { return name; }
 	std::string get_phone() const { return phone; }
+    bool operator < (const Person& rhs) const;
 private:
 	std::string name;
 	std::string phone;
