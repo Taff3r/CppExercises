@@ -13,8 +13,16 @@ void example()
     istream_iterator<int> iit(ss);
     istream_iterator<int> iit_end{};
 
-    while(iit != iit_end) { cout << *iit++ << endl; }
-
+    while(!ss.eof()) {
+        cout << *iit++ << endl;
+        if(ss.fail()){
+            ss.clear();
+            std::string s;
+            ss >> s;
+            cout << "[s: not an int: " << s << "]" << endl;
+            iit = istream_iterator<int>(ss);
+        }
+    }
     cout << std::boolalpha << "ss.eof(): " << ss.eof() << endl;
 }
 

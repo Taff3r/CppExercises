@@ -21,13 +21,13 @@ LDFLAGS =   -g
 
 # Targets
 #PROGS = texttest sortwords personsorttest istream_iterator_test
-PROGS = morsetest 
+PROGS = morsetest texttest personsorttest sortwords istream_iterator_test
 
 all: $(PROGS)
 
 # Targets rely on implicit rules for compiling and linking
 morsetest: morsecode.o
-texttest: texttest.o
+texttest: texttest.o textiterator.o
 sortwords: sortwords.o
 personsorttest: personsorttest.o person.o
 istream_iterator_test: istream_iterator_test.o
