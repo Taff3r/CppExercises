@@ -20,7 +20,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = csorttest tagremover_alg test_narrow_cast generate
+PROGS = csorttest tagremover_alg test_narrow_cast generate filereader_test
 
 all: $(PROGS)
 
@@ -28,6 +28,7 @@ all: $(PROGS)
 csorttest: csorttest.o
 tagremover_alg: tagremover_alg.o
 generate: generate.o
+filereader_test: filereader_test.o filereader.o
 
 # Phony targets
 .PHONY: all clean distclean
