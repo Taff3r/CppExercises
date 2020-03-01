@@ -20,13 +20,14 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = csorttest tagremover_alg test_narrow_cast
+PROGS = csorttest tagremover_alg test_narrow_cast generate
 
 all: $(PROGS)
 
 # Targets rely on implicit rules for compiling and linking
 csorttest: csorttest.o
 tagremover_alg: tagremover_alg.o
+generate: generate.o
 
 # Phony targets
 .PHONY: all clean distclean
