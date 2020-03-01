@@ -23,19 +23,16 @@ template <typename Iterator>
 // The difference between the largest element and the smallest
 // element should not be too large.
 void csort(Iterator first, Iterator last) {
-    auto mmax = std::min_element(first, last);
-    vector<int> count(distance(first, last));
+    auto mmax = std::minmax_element(first, last);
+    vector<int> count(*mmax.second - *mmax.first + 1);
     auto bCopy = first;
     while(first != last){
-        count[*first++ - *mmax] += 1;
+        count[*first++ - *mmax.first]++;
     }
-    for (unsigned int i = 0; i < count.size(); i++){
-        for (int k = 0; k < count[i]; k++){
-            if (*mmax < 0){
-                *bCopy++ = i + *mmax;
-            } else {
-                *bCopy++ = i - *mmax;
-            }
+
+    for (unsigned int i = 0; i < count.size(); ++i){
+        for (int k = 0; k < count[i]; ++k){
+            *bCopy++ = i + *mmax.first;
         }
     }
 }
